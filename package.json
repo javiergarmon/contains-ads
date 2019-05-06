@@ -25,7 +25,7 @@
     "update": "rm blocker/blocked.txt && curl https://easylist.to/easylist/easylist.txt -o blocker/blocked.txt"
   },
   "dependencies": {
-    "ad-block": "^2.0.1"
+    "ad-block": "javiergarmon/ad-block#node12"
   },
   "devDependencies": {
     "chai": "^3.5.0",
