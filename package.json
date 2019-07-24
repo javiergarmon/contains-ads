@@ -19,10 +19,8 @@
   "main": "./source/index.js",
   "scripts": {
     "test": "mocha tests",
-    "build": "node blocker",
-    "postupdate": "node blocker",
     "prepublish": "npm run update",
-    "update": "rm blocker/blocked.txt && curl https://easylist.to/easylist/easylist.txt -o blocker/blocked.txt"
+    "update": "rm lists/*.txt || true && curl https://github.com/brave/adblock-rust/raw/master/data/easylist.to/easylist/easylist.txt -o lists/easylist.txt && curl https://raw.githubusercontent.com/brave/adblock-rust/master/data/uBlockOrigin/unbreak.txt -o lists/unbreak.txt && curl https://raw.githubusercontent.com/brave/adblock-rust/master/data/uBlockOrigin/resources.txt -o lists/resources.txt && curl https://raw.githubusercontent.com/brave/adblock-rust/master/data/brave/coin-miners.txt -o lists/miners.txt"
   },
   "dependencies": {
     "adblock-rs": "0.1.28"

@@ -1,0 +1,1 @@
+<html><body>You are being <a href="https://raw.githubusercontent.com/brave/adblock-rust/master/data/easylist.to/easylist/easylist.txt">redirected</a>.</body></html>
