@@ -1,20 +1,23 @@
-const fs = require('fs');
-const path = require('path');
-const Blocker = require('ad-block');
+'use strict'
 
-const client = new Blocker.AdBlockClient();
-module.exports.client = client;
+const fs = require('fs')
+const path = require('path')
+const AdBlockClient = require('adblock-rs')
 
-const file = path.resolve(__dirname, 'detector.buffer');
-module.exports.initialize = () => new Promise((resolve, reject) => {
-  fs.readFile(file, (err, buffer) => {
-    if (err) { return reject(err); }
-    client.deserialize(buffer);
-    return resolve();
-  });
+const client = new AdBlockClient.Engine([], false)
+
+//const file = path.resolve(__dirname, 'detector.buffer');
+
+module.exports.initialize = async () => {
+  /*new Promise((resolve, reject) => {
+fs.readFile(file, (err, buffer) => {
+  if (err) { return reject(err); }
+  client.deserialize(buffer);
+  return resolve();
 });
+});*/
+}
 
-const none = Blocker.FilterOptions.noFilterOption;
-const isAd = (req, base) => client.matches(req, none, base);
-module.exports.containsAds = (req, base) => isAd(req, base);
-module.exports.isAd = isAd;
+module.exports.containsAds = (url, type, debug) => {
+  client.check(url, type, debug)
+}
